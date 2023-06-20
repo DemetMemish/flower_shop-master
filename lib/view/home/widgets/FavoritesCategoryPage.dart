@@ -2,29 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flower_shop/data/product_data.dart';
 import 'package:flower_shop/model/product_model.dart';
 import 'package:flower_shop/utils/colors.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class FavoritesCategoryPage extends StatelessWidget {
   const FavoritesCategoryPage({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
-    // Filter products based on the "Trening" category
-    List treningProducts = productData
-        .where((product) => product.category == 'Trening')
+    // Filter products excluding "Rose" and "Hanover" titles
+    List filteredProducts = productData
+        .where((product) =>
+    product.title == "Tulip" || product.title == "Rose")
         .toList();
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Trening Category'),
+        title: Text('Favorites'),
+        backgroundColor: Colors.green,
       ),
-      body: GridView.builder(
-        padding: const EdgeInsets.all(8),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-        ),
-        itemCount: treningProducts.length,
+      body: AlignedGridView.count(
+        crossAxisCount: 2,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
+        itemCount: filteredProducts.length,
         itemBuilder: (context, index) {
           return Container(
             decoration: BoxDecoration(
@@ -39,31 +40,56 @@ class FavoritesCategoryPage extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.network(
-                      treningProducts[index].image,
+                      filteredProducts[index].image,
                       height: 200,
                       width: double.maxFinite,
                       fit: BoxFit.cover,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        filteredProducts[index].category,
+                        style: const TextStyle(
+                          color: ksecondaryClr,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const Icon(
+                        Icons.favorite,
+                        color: ksecondaryClr,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 4,
+                  ),
                   Text(
-                    treningProducts[index].title,
+                    filteredProducts[index].title,
                     style: const TextStyle(
-                      fontSize: 20,
+                      fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(
+                    height: 4,
+                  ),
                   Text(
-                    treningProducts[index].desc,
+                    filteredProducts[index].desc,
                     maxLines: 2,
                     style: const TextStyle(fontSize: 11, color: kgrayClr),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Text(
-                    treningProducts[index].price,
+                    filteredProducts[index].price,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 12,
                       fontWeight: FontWeight.w500,
                       color: kgrayClr,
                     ),
@@ -73,6 +99,12 @@ class FavoritesCategoryPage extends StatelessWidget {
             ),
           );
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pop(context); // Go back to the previous screen
+        },
+        child: Icon(Icons.arrow_back),
       ),
     );
   }

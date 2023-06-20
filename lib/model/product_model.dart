@@ -3,8 +3,8 @@ class ProductModel {
 
   ProductModel(
       {required this.image,
-      required this.title,
-      required this.price,
-      required this.category,
-      required this.desc});
+        required this.title,
+        required this.price,
+        required this.category,
+        required this.desc});
 }

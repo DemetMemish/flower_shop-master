@@ -19,8 +19,8 @@ class CategoryCard extends StatelessWidget {
           padding: const EdgeInsets.only(right: 8),
           child: GestureDetector(
             onTap: () {
-              if (categoryData[index].title == 'Trening') {
-                Navigator.pushNamed(context, '/trening'); // Navigate to the "Trening" category page
+              if (categoryData[index].title == 'Categories') {
+                Navigator.pushNamed(context, '/category'); // Navigate to the "Trening" category page
               }
               if (categoryData[index].title == 'Flowers') {
                 Navigator.pushNamed(context, '/flowers'); // Navigate to the "Trening" category page
@@ -30,6 +30,9 @@ class CategoryCard extends StatelessWidget {
               }
               if (categoryData[index].title == 'Basket') {
                 Navigator.pushNamed(context, '/basket'); // Navigate to the "Trening" category page
+              }
+              if(categoryData[index].title == "SignOut"){
+                Navigator.pushNamed(context, '/SignOut');
               }
             },
             child: Container(

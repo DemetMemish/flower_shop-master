@@ -2,10 +2,14 @@ import 'package:flower_shop/model/category_model.dart';
 import 'package:flutter/material.dart';
 
 List categoryData = [
+  CategoryModel(title:"SignOut",
+    icon: Icons.login,
+    active: false,
+  ),
   CategoryModel(
     title: 'Categories',
     icon: Icons.local_florist,
-    active: true,
+    active: false,
   ),
   CategoryModel(
     title: "Flowers",
@@ -22,4 +26,5 @@ List categoryData = [
     icon: Icons.shopping_basket,
     active: false,
   ),
+
 ];

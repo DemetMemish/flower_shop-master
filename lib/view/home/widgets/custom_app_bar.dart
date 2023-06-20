@@ -12,28 +12,45 @@ class CustomAppBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        RichText(
-          text: const TextSpan(
-              text: 'Welcome ',
-              style: TextStyle(
-                color: ksecondaryClr,
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
+        Row(
+          children: [
+            // Logo widget goes here
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Icon(
+                Icons.local_florist, // Replace with your logo icon or widget
+                color: Colors.green,
+                size: 24,
               ),
-              children: [
-                TextSpan(
-                    text: 'Mr.Adam',
+            ),
+            RichText(
+              text: const TextSpan(
+                text: 'FlowerLand',
+                style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 20,
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w500,
+
+                ),
+                children: [
+                  TextSpan(
+                    text: '',
                     style: TextStyle(
                       color: kblackClr,
                       fontSize: 22,
                       fontWeight: FontWeight.w600,
-                    ))
-              ]),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
         const CircleAvatar(
           backgroundColor: klightGrayClr,
           child: Icon(Icons.notifications_outlined, color: kblackClr),
-        )
+        ),
       ],
     );
   }

@@ -3,12 +3,19 @@ import 'package:flutter/material.dart';
 import 'widgets/category_card.dart';
 import 'widgets/custom_app_bar.dart';
 import 'widgets/product_section.dart';
+import 'package:location/location.dart';
+
+
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -52,3 +59,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
